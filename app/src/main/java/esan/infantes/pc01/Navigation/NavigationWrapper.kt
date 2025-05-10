@@ -7,11 +7,13 @@ import androidx.navigation.compose.rememberNavController
 import esan.infantes.pc01.CalculatorScreen
 import esan.infantes.pc01.CatalogoScreen
 import esan.infantes.pc01.ConversorScreen
+import esan.infantes.pc01.HomeScreen
 
 @Composable
 fun NavigationWrapper(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screens.Home.route) {
+        composable(Screens.Home.route) { HomeScreen(navController) }
         composable(BottomNavItem.Calculator.route) { CalculatorScreen(navController) }
         composable(BottomNavItem.Catalogo.route) { CatalogoScreen(navController) }
         composable(BottomNavItem.Conversor.route) { ConversorScreen(navController) }

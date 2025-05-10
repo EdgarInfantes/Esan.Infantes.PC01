@@ -103,27 +103,28 @@ fun ConversorScreen(navController: NavHostController) {
             val currencySymbol = if (conversionType == ConversionType.USD_TO_PEN) "S/." else "$"
             Text("Resultado: $currencySymbol$result", style = MaterialTheme.typography.bodyMedium)
         }
-    }
-    //Boton regresar a Home
-    Button(
-        onClick = { navController.navigate(Screens.Home.route) },
-        modifier = Modifier
-            .fillMaxWidth(0.8f)
-            .height(50.dp),
-        shape = RoundedCornerShape(12.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF00C853),
-            contentColor = Color.White
-        ),
-    ) {
-        Text("Regresar",
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0xFFFFFFFF),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
-        )
+        //Boton regresar a Home
+        Button(
+            onClick = { navController.navigate(Screens.Home.route) },
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .height(50.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF00C853),
+                contentColor = Color.White
+            ),
+        ) {
+            Text("Regresar",
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0xFFFFFFFF),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
 
+        }
     }
+
 }
 
 // Enum para el tipo de conversión

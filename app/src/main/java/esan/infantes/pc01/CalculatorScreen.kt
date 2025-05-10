@@ -137,27 +137,28 @@ fun CalculatorScreen(navController: NavHostController) {
                 style = MaterialTheme.typography.bodyLarge
             )
         }
-    }
-    //Boton regresar a Home
-    Button(
-        onClick = { navController.navigate(Screens.Home.route) },
-        modifier = Modifier
-            .fillMaxWidth(0.8f)
-            .height(50.dp),
-        shape = RoundedCornerShape(12.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF00C853),
-            contentColor = Color.White
-        ),
-    ) {
-        Text("Regresar",
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0xFFFFFFFF),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
-        )
+        //Boton regresar a Home
+        Button(
+            onClick = { navController.navigate(Screens.Home.route) },
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .height(50.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF00C853),
+                contentColor = Color.White
+            ),
+        ) {
+            Text("Regresar",
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0xFFFFFFFF),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
 
+        }
     }
+
 
 
 }

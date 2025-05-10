@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -40,10 +41,13 @@ fun CatalogoScreen(navController: NavHostController) {
     val total = products.sumOf { it.price }
 
     Column(modifier = Modifier.padding(16.dp)) {
-        Text("Catálogo de Productos Tecnológicos", style = MaterialTheme.typography.headlineLarge)
+        Text(
+            "Catálogo de Productos Tecnológicos",
+            style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier.padding(bottom = 16.dp) // Espaciado adicional
+        )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
+        // LazyColumn para mostrar los productos
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(products) { product ->
                 ProductCard(product)
@@ -58,26 +62,29 @@ fun CatalogoScreen(navController: NavHostController) {
             style = MaterialTheme.typography.bodyLarge,
             color = Color.Black
         )
-    }
-    //Boton regresar a Home
-    Button(
-        onClick = { navController.navigate(Screens.Home.route) },
-        modifier = Modifier
-            .fillMaxWidth(0.8f)
-            .height(50.dp),
-        shape = RoundedCornerShape(12.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF00C853),
-            contentColor = Color.White
-        ),
-    ) {
-        Text("Regresar",
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0xFFFFFFFF),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
-        )
 
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón regresar a Home
+        Button(
+            onClick = { navController.navigate(Screens.Home.route) },
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .height(50.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF00C853),
+                contentColor = Color.White
+            ),
+        ) {
+            Text(
+                "Regresar",
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color.White,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
 
@@ -87,14 +94,17 @@ fun ProductCard(product: Product) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
+        shape = RoundedCornerShape(12.dp) // Asegura que las esquinas estén redondeadas
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             // Imagen del producto
             Image(
                 painter = rememberImagePainter(product.imageUrl),
                 contentDescription = product.name,
-                modifier = Modifier.size(100.dp),
+                modifier = Modifier
+                    .size(100.dp) // Tamaño de la imagen
+                    .clip(RoundedCornerShape(8.dp)), // Redondeo de la imagen
                 contentScale = ContentScale.Crop
             )
 
@@ -121,5 +131,4 @@ fun ProductCard(product: Product) {
             }
         }
     }
-
 }
