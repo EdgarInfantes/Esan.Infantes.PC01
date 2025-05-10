@@ -47,24 +47,6 @@ fun CatalogoScreen(navController: NavHostController) {
             modifier = Modifier.padding(bottom = 16.dp) // Espaciado adicional
         )
 
-        // LazyColumn para mostrar los productos
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(products) { product ->
-                ProductCard(product)
-            }
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Mostrar el total acumulado
-        Text(
-            text = "Total: S/. ${"%.2f".format(total)}",
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color.Black
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
         // Botón regresar a Home
         Button(
             onClick = { navController.navigate(Screens.Home.route) },
@@ -85,6 +67,26 @@ fun CatalogoScreen(navController: NavHostController) {
                 fontWeight = FontWeight.Bold
             )
         }
+
+        // LazyColumn para mostrar los productos
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(products) { product ->
+                ProductCard(product)
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Mostrar el total acumulado
+        Text(
+            text = "Total: S/. ${"%.2f".format(total)}",
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color.Black
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+
     }
 }
 
